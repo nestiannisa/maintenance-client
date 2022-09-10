@@ -1,0 +1,300 @@
+Button {
+    background-color: var(--color-primary) !important;
+    border: none !important;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+
+/* --- DASHBORD --- */
+.form-inline{
+    display: flex;
+    gap: 15px;
+}
+
+.section{
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+    height: 670px;
+}
+
+.section .btnD p, .section .btnE p, .section .btnF p, .section .btnC p{
+    font-size: 25px;
+    border-radius: 10px;
+    margin-top: 10px;
+    border: none;
+    min-width: 190px;
+    padding: 20px;
+    color: white;
+}
+
+.btnF p, .btnC p, .btnE p, .btnD p{
+    height: 120px;    
+}
+
+.btnE {
+    text-align: center;
+    vertical-align: middle;
+    align-items: center;
+}
+
+.section .btnD p, .btnF p{
+    background-color: var(--color-primary);
+    cursor: pointer;
+}
+
+.section .btnE p, .section .btnC p{
+    background-color: yellow;
+    color: black !important;
+}
+
+.section a {
+    color: white !important;
+}
+
+.section Button{
+    font-size: 20px;
+}
+
+.section1{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding-left: 2px;
+    margin-left: 20px;
+    height: 670px;
+}
+
+.section-breakdown{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding-left: 20px;
+    margin-left: 20px;
+    /* height: 670px; */
+}
+
+
+.section2{
+    border-radius: 10px;
+    border: 1px solid black;
+    margin: 10px;
+    margin-left: 100px;
+    padding: 10px;
+}
+
+.section3 {
+    margin: 10px;
+}
+
+.dashbord_btn_section a{
+    /*
+    padding: 40px 60px;
+    padding: 50px 60px;
+    */
+    background-color: var(--color-primary) !important;
+    width: 150px;
+    height: 120px;
+    padding-top: 50px;
+    border: none;
+    border-radius: 20px;
+}
+
+
+.section4, .dashbord_section4{
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 10px;
+    background-color: var(--color-background);
+    margin-bottom: 10px;
+    box-shadow: 1px 6px #8888;
+}
+
+Select{
+    width: 10px;
+}
+
+.col_viewBreackdown p{
+    color: black !important;
+}
+
+/*
+.box_no_dashbord span{
+    border-radius: 10px;
+    background-color: var(--color-blue);
+    padding: 8px 20px;
+    color: white;
+}
+
+    */
+/* --- DISPENSER ---*/
+
+.station_dispenser, .station_casting{
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 150px;
+    padding: 10px;
+}
+
+.name_dispenser, .name_part{
+    border-radius: 10px;
+    text-align: center;
+    padding: 35px ;
+    background-color: var(--color-blue);
+    color: white;
+}
+
+.dispenser{
+    display: flex;
+    gap: 15px;
+    padding-top: 28px;
+}
+/*
+.dispenser p {
+    background-color: var(--color-primary);
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+}
+ */
+
+.box_list_dispenser{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.box_list_dispenser span, .image_dispenser span, .casting_part span{
+    color: white !important;
+    background-color: var(--color-blue);
+    text-align: center;
+    border-radius: 1000px;
+}
+
+.box_list_dispenser span{
+    padding: 5px 10px;
+}
+
+.image_dispenser span, .casting_part span {
+    padding: 5px 12px;
+}
+
+.box_list_dispenser p{
+    margin-bottom: 0px;
+}
+.list_dispenser a, .asset_part a {
+    color: black !important;
+}
+
+/* --- casting --- */
+.casting_time{
+    display: flex;
+}
+
+.casting{
+    display: flex;
+    gap: 15px;
+}
+
+.casting p, .box_no_dashbord span, .dispenser p{
+    background-color: var(--color-blue);
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+}
+
+.station_casting {
+    height: 160px !important;
+}
+
+.button_casting{
+    text-align: center;
+    padding-top: 20px;
+}
+
+.box_casting p {
+    border-radius: 5px;
+    background-color: var(--color-bg-data) ;
+    height: 30px;
+    padding-left: 10px;
+    padding-top: 3px;
+}
+
+.box_casting {
+    background-color: #EEF1F6;
+    border: 1px solid var(--color-primary);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.box_casting small {
+    color: red;
+}
+/* --- asset_view ---*/
+
+.asset_view span {
+    background-color: var(--color-primary);
+    padding: 10px 40px;
+    color: white;
+    border-radius: 10px;
+}
+
+/*housing*/
+.addHousing{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;    
+    width: 700px;
+    align-items: center;
+    align-content: center;
+}
+
+.viewAsset_section {
+    border-radius: 10000000px;
+    background-color: var(--color-primary);
+    width: 150px;
+    height: 150px;
+    color: white;
+    text-align: center;
+    padding: 40px;
+    /* padding: 10px; */
+    /* box-shadow:   5px 5px 10px 10px var(--color-background); */
+}
+
+.viewSec{
+    padding-top: 50px;
+    /* margin-left: 20px; */
+}
+.viewSec1{
+    /* padding-top: 50px; */
+    padding-left: 50px;
+}
+
+.viewAsset_section p{
+    margin-top: 20px;
+}
+
+
+/* .viewSec{
+    border-radius: 10px;
+    background-color: var(--color-primary);
+    width: 200px;
+    padding: 40px;
+} */
+.detail_edit{
+    margin-left: 15px;
+}
+
+.castingImage{
+margin-top: -100px;}
+
+.buttonAdd span{
+    color: white !important;
+} 

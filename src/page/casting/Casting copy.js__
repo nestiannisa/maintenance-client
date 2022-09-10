@@ -1,0 +1,90 @@
+import React from "react";
+import "../dashbord/dashbord.css";
+import { Button, Col, Container, Row, Form } from "react-bootstrap";
+
+function Casting() {
+  const mesin = [
+    {
+      id: "1",
+      name: "casting",
+    },
+    {
+      id: "2",
+      name: "vrla",
+    },
+  ];
+
+  const nomor = [
+    {
+      id: "1",
+      no: "1",
+    },
+    {
+      id: "2",
+      no: "2",
+    },
+  ];
+
+  return (
+    <>
+      <Container className="pt-5 pb-5">
+        <Row>
+          <Col md={2} lg={1} className=" section"></Col>
+          <Col className="section1">
+            <Col className="section3">
+              <Row className="section2">
+                <Col lg={12}>
+                  <Form className="form-inline">
+                    <input type="date"></input>
+                    <Form.Select className="w-25">
+                      <option disabled className="text-center">
+                        {" "}
+                        --- Section ---
+                      </option>
+                      {mesin.map(({ id, name }) => {
+                        return <option value={name}>{name}</option>;
+                      })}
+                    </Form.Select>
+                    <Form.Select className="w-25">
+                      <option>All Line</option>
+                      {nomor.map(({ id, no }) => {
+                        return <option value={no}>{no}</option>;
+                      })}
+                    </Form.Select>
+
+                    <Button className="btn btn-primary justify-content-center">
+                      {" "}
+                      Search
+                    </Button>
+                  </Form>
+                </Col>
+              </Row>
+              {nomor.map(({ id, no }) => {
+                return (
+                  <>
+                    <Row className="section4">
+                      <div className="btn-casting ">
+                        <Row>
+                          <Col md={2}>
+                            <Button href="/casting/part">CAST</Button>
+                          </Col>
+                          <Col>
+                            <p>
+                              <span>no:{no}</span>
+                            </p>
+                          </Col>
+                        </Row>
+                      </div>
+                    </Row>
+                  </>
+                );
+              })}
+            </Col>
+          </Col>
+        </Row>
+      </Container>
+    </>
+  );
+}
+
+export default Casting;

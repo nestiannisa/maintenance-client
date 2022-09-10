@@ -1,0 +1,62 @@
+import React from "react";
+import { Col, Container, Row } from "react-bootstrap";
+
+function CastingPart() {
+  return (
+    <>
+      <Container className="pt-5">
+        <Row className="station_part">
+          <Col md={2} className="name_part ">
+            <h1>CAST</h1>
+          </Col>
+          <Col>
+            <Row>
+              <p>CM/2022/010281</p>
+            </Row>
+            <Row>
+              <div className="part ">
+                <p>Casting</p>
+                <p>No:</p>
+                <p>Station</p>
+              </div>
+            </Row>
+          </Col>
+        </Row>
+        <Row className="pt-5">
+          <Col className="image_part">
+            <Row>
+              <Col>
+                <p>
+                  <span>1</span>
+                </p>
+              </Col>
+              <Col>
+                <p>
+                  <span>2</span>
+                </p>
+              </Col>
+            </Row>
+          </Col>
+          <Col className="box_list_part">
+            <div>
+              <h5 className="mb-3">List Part:</h5>
+              <p>
+                <a href="/casting/part/ladle">
+                  <span>1.</span> Ladle
+                </a>
+              </p>
+              <br />
+              <p>
+                <a href="/casting/part/vakum">
+                  <span>2.</span> Vacum
+                </a>
+              </p>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </>
+  );
+}
+
+export default CastingPart;
