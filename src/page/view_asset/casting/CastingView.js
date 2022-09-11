@@ -18,10 +18,10 @@ function CastingView() {
               <Col>
                 <h5>Casting</h5>
                 <ol>
-                  <li>
+                  {/* <li>
                     <a href="/viewAsset/casting/dispenser">Dispenser</a>
-                  </li>
-                  <li>Mold</li>
+                  </li> */}
+                  {/* <li>Mold</li>
                   <li>Ladle</li>
                   <li>leadle</li>
                   <li>Lead pump</li>
@@ -38,7 +38,33 @@ function CastingView() {
                   <li>stang mold</li>
                   <li>mold dalam</li>
                   <li>spie gear as motor</li>
-                  <li>stelan tdk terpasang</li>
+                  <li>stelan tdk terpasang</li> */}
+                  {/* <li>FRAME & ACCESSORIES UNIT</li>
+
+                  <li>RECYCLE GRID CONVEYOR UNIT</li> */}
+                  <li><a href="/viewAsset/casting/dispenser">DISPENSER UNIT</a></li>
+                  <li>LADLE UNIT</li>
+                  <li>STANG MOLD UNIT</li>
+                  <li>MOLD UNIT</li>
+                  <li>FEEDER UNIT</li>
+                  <li>STACKER UNIT</li>
+                  <li>TRIM DIES UNIT</li>
+                  <li>INPUT ROLLER UNIT</li>
+                  <li>ADJUSTER CHAIN UNIT A</li>
+                  <li>ADJUSTER CHAIN UNIT B</li>
+                  <li>STOPPER GRID UNIT</li>
+                  <li>MOLD HINGE UNIT</li>
+                  <li>GUIDER GRID UNIT</li>
+                  <li>ENTRY PLATE UNIT</li>
+                  <li>SLIDE ARM UNIT</li>
+                  {/* <li>PENGAIT STOPPER GRID UNIT</li> */}
+                  <li>TRIM DIES TRANSMITION UNIT</li>
+                  <li>MAIN TRANSMITION UNIT</li>
+                  <li>PENAHAN ENTRY STOPPER UNIT</li>
+                  <li>ADJUSTER CHAIN UNIT C</li>
+                  <li>ADJUSTER CHAIN UNIT D</li>
+                  {/* <li>ENGKOL SWITCH TRANSMITION UNIT</li> */}
+                  {/* <li>STACKER TRANSMITION UNIT CHAIN TRANSMITION UNIT</li> */}
                 </ol>
               </Col>
               <Col>
@@ -56,20 +82,21 @@ function CastingView() {
                 </ol>
 
                 <div className="mt-5 buttonAdd ">
-              <Button className="mt-5 " href="/viewAsset/casting/addCasting">
-              <span>
-                <FaPlus /> Tambah Data Kerusakan
-                </span>
-            </Button>
+                  <Button
+                    className="mt-5 "
+                    href="/viewAsset/casting/addCasting"
+                  >
+                    <span>
+                      <FaPlus /> Tambah Data Kerusakan
+                    </span>
+                  </Button>
                 </div>
               </Col>
             </Row>
           </Col>
           <Col>
             <div className="castingImage">
-              <Image src={Casting} 
-              width="800px"
-              height="800px"/>
+              <Image src={Casting} width="800px" height="800px" />
             </div>
           </Col>
         </Row>

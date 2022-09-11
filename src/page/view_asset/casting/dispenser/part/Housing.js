@@ -1,18 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form, Button, Table } from "react-bootstrap";
 import { showData } from "../../../../../action/maintenanceAction";
+import { housing } from "../../../../../action/mttrAction";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 function Housing() {
   const { showDataResult, showDataLoading, showDataError } = useSelector(
-    (state) => state.maintenance
+    (state) => state.maintenance);
+  const { housingResult, housingLoading, housingError } = useSelector(
+    (state) => state.mttr
   );
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(showData());
+    dispatch(housing());
   }, [dispatch]);
+
+  console.log(housingResult)
   return (
     <>
       <Container>
@@ -36,7 +42,8 @@ function Housing() {
                 <>
                   <tbody>
                     <tr>
-                      {housing.Bagian === "Housing" ? (
+                      {housing.Bagian === "Housing" ? 
+                      (
                         <>
                           <td>{housing.Section}</td>
                           <td>{housing.No_Mesin}</td>
@@ -45,7 +52,7 @@ function Housing() {
                           <td>{housing.Problem}</td>
                           <td>{housing.Penyebab}</td>
                           <td>{housing.Jenis_Perbaikan}</td>
-                          <td>{housing.Mttr}</td>
+                          <td>{housing.Durasi/housingResult}</td>
                           <td>{housing.Mtbf}</td>
                           <td>{housing.Running_Hours}</td>
                           <td>

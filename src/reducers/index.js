@@ -6,6 +6,8 @@ import bagian from './bagian'
 import problem from './problem'
 import penyebab from './penyebab'
 import jenisPerbaikan from './jenisPerbaikan'
+import mttr from './mttr'
+import subBagian from './subBagian';
 export default combineReducers({
 maintenance,
 line,
@@ -13,6 +15,8 @@ section,
 bagian,
 penyebab,
 problem,
-jenisPerbaikan
+jenisPerbaikan,
+mttr,
+subBagian
 });
 

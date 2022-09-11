@@ -1,9 +1,20 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { Container, Col, Row, Button, Image } from "react-bootstrap";
 // import casting
 import IMG1 from "../../../../assets/dispenser.png";
 import IMG2 from "../../../../assets/dispenseer1.png";
+import { housing, mttrHousing } from "../../../../action/mttrAction";
+import { useDispatch, useSelector } from "react-redux";
 function Dispenser() {
+  const { housingResult, mttrHousingResult } = useSelector(
+    (state) => state.mttr
+  );
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(housing());
+    dispatch(mttrHousing());
+  }, [dispatch]);
   return (
     <>
       <Container className="pt-5">
@@ -43,7 +54,10 @@ function Dispenser() {
               <h5 className="mb-3">List Part:</h5>
               <p>
                 <a href="/viewAsset/casting/dispenser/housing">
-                  <span>1.</span> Housing
+                  <span>1.</span> Housing, 
+                  <p>
+                  MTTR: {mttrHousingResult/housingResult}
+                  </p>
                 </a>
               </p>
               <br />

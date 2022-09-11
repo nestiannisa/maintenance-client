@@ -1,3 +1,4 @@
+
 Button {
     background-color: var(--color-primary) !important;
     border: none !important;
@@ -29,6 +30,8 @@ a {
     min-width: 190px;
     padding: 20px;
     color: white;
+    /* font-family: 'Segoe UI'; */
+
 }
 
 .btnF p, .btnC p, .btnE p, .btnD p{
@@ -117,6 +120,8 @@ Select{
 
 .col_viewBreackdown p{
     color: black !important;
+    font-family: 'Segoe UI';
+    
 }
 
 /*

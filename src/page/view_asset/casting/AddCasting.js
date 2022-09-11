@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Container, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { addData } from "../../../action/maintenanceAction";
 import { showSection } from "../../../action/sectionAction";
@@ -8,26 +8,32 @@ import { showPenyebab } from "../../../action/penyebabAction";
 import { showProblem } from "../../../action/problemAction";
 import { showJenisPerbaikan } from "../../../action/jenisPerbaikanAction";
 import { useNavigate } from "react-router-dom";
-
+import { showSubBagian } from "../../../action/subBagianAction";
 function AddCasting() {
   const [sections, setSections] = useState("Casting");
   const [durasi, setDurasi] = useState("");
   const [noMesin, setNoMesin] = useState("");
   const [gejalaKerusakan, setGejalaKerusakan] = useState("");
   const [bagian, setBagian] = useState("");
+  const [subBagian, setSubBagian] = useState("");
   const [problem, setProblem] = useState("");
   const [catatan, setCatatan] = useState("");
   const [penyebab, setPenyebab] = useState("");
   const [jenisPerbaikan, setJenisPerbaikan] = useState("");
+  const [tindakanPerbaikan, setTindakanPerbaikan] = useState("");
   const [runningHours, setRunningHours] = useState("");
   const [categories, setCategories] = useState("");
   const [part, setPart] = useState("");
   const [nama, setNama] = useState("");
+
   console.log("s", sections);
   const { showSectionResult, showSectionLoading, showSectionError } =
     useSelector((state) => state.section);
   const { showBagianResult, showBagianLoading, showBagianError } = useSelector(
     (state) => state.bagian
+  );
+  const { showSubBagianResult} = useSelector(
+    (state) => state.subBagian
   );
   const { showPenyebabResult, showPenyebabLoading, showPenyebabError } =
     useSelector((state) => state.penyebab);
@@ -67,6 +73,7 @@ function AddCasting() {
   useEffect(() => {
     dispatch(showSection());
     dispatch(showBagian());
+    dispatch(showSubBagian());
     dispatch(showProblem());
     dispatch(showPenyebab());
     dispatch(showJenisPerbaikan());
@@ -89,6 +96,8 @@ function AddCasting() {
         Running_Hours: runningHours,
         category: categories,
         part: part,
+        Tindakan_Perbaikan: tindakanPerbaikan,
+        subBagian: subBagian
       })
     );
     navigate("/viewBreakdown");
@@ -99,101 +108,133 @@ function AddCasting() {
         <Row className=" container_addData ">
           <div>
             <Form className="addHousing ">
-              <Form.Label>Section</Form.Label>
-              {/* <Form.Select
-              onChange={(event) => setSections(event.target.value)}
-            >
-              <option>--Pilih Section--</option>;
-              {showSectionResult ? (
-                showSectionResult.map((section) => {
-                  return (
-                    <option
-                      value={section.value}
-                    >
-                      {section.value}
-                    </option>
-                  );
-                })
-              ) : (
-                <></>
-              )}
-            </Form.Select> */}
-              <Form.Control
-                value="Section"
-                disabled
-                onChange={(event) => setSections(event.target.value)}
-              ></Form.Control>
-              <Form.Label>Nomor Mesin</Form.Label>
-              <Form.Control
-                value={noMesin}
-                onChange={(event) => setNoMesin(event.target.value)}
-              ></Form.Control>
-              <Form.Label>Nama Mesin</Form.Label>
-              <Form.Control
-                value={nama}
-                onChange={(event) => setNama(event.target.value)}
-              ></Form.Control>
-              <Form.Label>Gejala Kerusakan</Form.Label>
-              <Form.Control
-                value={gejalaKerusakan}
-                onChange={(event) => setGejalaKerusakan(event.target.value)}
-              ></Form.Control>
-              <Form.Label> Bagian</Form.Label>
-              <Form.Select onChange={(event) => setBagian(event.target.value)}>
-                <option>--Pilih Bagian--</option>;
-                {showBagianResult ? (
-                  showBagianResult.map((bagian) => {
-                    return <option value={bagian.Value}>{bagian.Value}</option>;
-                  })
-                ) : (
-                  <></>
-                )}
-              </Form.Select>
-              {/* <Form.Control
+              <Row>
+                <Col>
+                  <Form.Label>Section</Form.Label>
+                  <Form.Control
+                    value="Section"
+                    disabled
+                    onChange={(event) => setSections(event.target.value)}
+                  ></Form.Control>
+
+                  <Form.Label>Nomor Mesin</Form.Label>
+                  <Form.Control
+                    value={noMesin}
+                    onChange={(event) => setNoMesin(event.target.value)}
+                  ></Form.Control>
+
+                  <Form.Label>Nama Mesin</Form.Label>
+                  <Form.Control
+                    value={nama}
+                    onChange={(event) => setNama(event.target.value)}
+                  ></Form.Control>
+
+                  <Form.Label>Gejala Kerusakan</Form.Label>
+                  <Form.Control
+                    value={gejalaKerusakan}
+                    onChange={(event) => setGejalaKerusakan(event.target.value)}
+                  ></Form.Control>
+
+                  <Form.Label> Bagian</Form.Label>
+                  <Form.Select
+                    onChange={(event) => setBagian(event.target.value)}
+                  >
+                    <option>--Pilih Bagian--</option>;
+                    {showBagianResult ? (
+                      showBagianResult.map((bagian) => {
+                        return (
+                          <option value={bagian.Value}>{bagian.Value}</option>
+                        );
+                      })
+                    ) : (
+                      <></>
+                    )}
+                  </Form.Select>
+                 
+                  <Form.Label>Sub Bagian</Form.Label>
+                  <Form.Select
+                    onChange={(event) => setSubBagian(event.target.value)}
+                  >
+                    <option>--Pilih Sub Bagian--</option>;
+                    {showSubBagianResult ? (
+                      showSubBagianResult.map((subBagian) => {
+                        return (
+                          <>
+                          {subBagian.bagian.Value === bagian ?
+                          (
+                            <>
+                            <option value={subBagian.Value}>{subBagian.Value}</option>
+                            </>
+
+                          ):(<></>)}
+                          </>
+                        );
+                      })
+                    ) : (
+                      <></>
+                    )}
+                  </Form.Select>
+
+                  {/* <Form.Control
               value={bagian}
               onChange={(event) => setBagian(event.target.value)}
             ></Form.Control> */}
-              <Form.Label>Problem</Form.Label>
-              <Form.Select onChange={(event) => setProblem(event.target.value)}>
-                <option>--Pilih Problem--</option>;
-                {showProblemResult ? (
-                  showProblemResult.map((problem) => {
-                    return (
-                      <option value={problem.Value} id="Problem" name="Problem">
-                        {problem.Value}
-                      </option>
-                    );
-                  })
-                ) : (
-                  <></>
-                )}
-              </Form.Select>
 
-              {/* <Form.Control
+                  <Form.Label>Problem</Form.Label>
+                  <Form.Select
+                    onChange={(event) => setProblem(event.target.value)}
+                  >
+                    <option>--Pilih Problem--</option>;
+                    {showProblemResult ? (
+                      showProblemResult.map((problem) => {
+                        return (
+                          <>
+                          {problem.subBagian.Value === subBagian ?
+                          (
+                            <>
+                          <option value={problem.Value} id="Problem" name="Problem" >
+                            {problem.Value}
+                          </option>
+                            </>
+
+                          ):(<></>)}
+                            </>
+                        );
+                      })
+                    ) : (
+                      <></>
+                    )}
+                  </Form.Select>
+
+                  {/* <Form.Control
               value={problem}
               onChange={(event) => setProblem(event.target.value)}
             ></Form.Control> */}
-              <Form.Label>Penyebab </Form.Label>
-              <Form.Select
-                onChange={(event) => setPenyebab(event.target.value)}
-              >
-                <option>--Pilih Penyebab--</option>;
-                {showPenyebabResult ? (
-                  showPenyebabResult.map((penyebab) => {
-                    return (
-                      <option value={penyebab.Value}>{penyebab.Value}</option>
-                    );
-                  })
-                ) : (
-                  <></>
-                )}
-              </Form.Select>
 
-              {/* <Form.Control
+                  <Form.Label>Penyebab </Form.Label>
+                  <Form.Select
+                    onChange={(event) => setPenyebab(event.target.value)}
+                  >
+                    <option>--Pilih Penyebab--</option>;
+                    {showPenyebabResult ? (
+                      showPenyebabResult.map((penyebab) => {
+                        return (
+                          <option value={penyebab.Value}>
+                            {penyebab.Value}
+                          </option>
+                        );
+                      })
+                    ) : (
+                      <></>
+                    )}
+                  </Form.Select>
+
+                  {/* <Form.Control
               value={penyebab}
               onChange={(event) => setPenyebab(event.target.value)}
             ></Form.Control> */}
-              <Form.Label>Jenis Perbaikan </Form.Label>
+
+                  {/* <Form.Label>Jenis Perbaikan </Form.Label>
               <Form.Select
                 onChange={(event) => setJenisPerbaikan(event.target.value)}
               >
@@ -207,13 +248,13 @@ function AddCasting() {
                 ) : (
                   <></>
                 )}
-              </Form.Select>
+              </Form.Select> */}
 
-              {/* <Form.Control
+                  {/* <Form.Control
               value={jenisPerbaikan}
               onChange={(event) => setJenisPerbaikan(event.target.value)}
             ></Form.Control> */}
-              {/* <Form.Label>MTTR</Form.Label>
+                  {/* <Form.Label>MTTR</Form.Label>
             <Form.Control
               value={mttr}
               onChange={(event) => setMttr(event.target.value)}
@@ -223,37 +264,55 @@ function AddCasting() {
               value={mtbf}
               onChange={(event) => setMtbf(event.target.value)}
             ></Form.Control> */}
-              <Form.Label>Running Hours</Form.Label>
-              <Form.Control
-                value={runningHours}
-                onChange={(event) => setRunningHours(event.target.value)}
-              ></Form.Control>
-              <Form.Label>Durasi</Form.Label>
-              <Form.Control
-                value={durasi}
-                onChange={(event) => setDurasi(event.target.value)}
-              ></Form.Control>
-              <Form.Label>Catatan</Form.Label>
-              <Form.Control
-                value={catatan}
-                onChange={(event) => setCatatan(event.target.value)}
-              ></Form.Control>
-              <Form.Label>Category</Form.Label>
-              {category.map(({ id, value }) => {
-                return (
-                  <Form.Check
-                    onChange={(event) => setCategories(event.target.value)}
-                    inline
-                    label={value}
-                    type="checkbox"
-                    className="ml-3"
-                    name="group2"
-                    value={value}
-                  ></Form.Check>
-                );
-              })}
-              <Form.Label>Availibility Part</Form.Label>
-              {/* <Form.Check
+
+                </Col>
+                <Col>
+                  <Form.Label>Tindakan Perbaikan</Form.Label>
+                  <Form.Control
+                    value={tindakanPerbaikan}
+                    onChange={(event) => setTindakanPerbaikan(event.target.value)}
+                  ></Form.Control>
+
+                  <Form.Label>Running Hours</Form.Label>
+                  <Form.Control
+                    value={runningHours}
+                    onChange={(event) => setRunningHours(event.target.value)}
+                  ></Form.Control>
+                  
+                  <Form.Label>Durasi</Form.Label>
+                  <Form.Control
+                    value={durasi}
+                    onChange={(event) => setDurasi(event.target.value)}
+                  ></Form.Control>
+                  
+                  <Form.Label>Catatan</Form.Label>
+                  <Form.Control
+                    value={catatan}
+                    onChange={(event) => setCatatan(event.target.value)}
+                  ></Form.Control>
+                  <Form.Label className="mt-3">Category</Form.Label>
+                  <br />
+                  {category.map(({ id, value }) => {
+                    return (
+                      <>
+                        <Form.Check
+                          onChange={(event) =>
+                            setCategories(event.target.value)
+                          }
+                          inline
+                          label={value}
+                          type="checkbox"
+                          className="ml-3"
+                          name="group2"
+                          value={value}
+                        ></Form.Check>
+                        <br />
+                      </>
+                    );
+                  })}
+                  <Form.Label className="mt-3">Availibility Part</Form.Label>
+                  <br />
+                  {/* <Form.Check
                           inline
                           label="Available"
                           type="radio"
@@ -271,20 +330,25 @@ function AddCasting() {
                           name="part"
                           value={part}
                         ></Form.Check> */}
-              {parts.map(({ id, value }) => {
-                return (
-                  <Form.Check
-                    onChange={(event) => setPart(event.target.value)}
-                    inline
-                    label={value}
-                    type="radio"
-                    className="ml-3"
-                    name="part"
-                    id="part"
-                    value={part}
-                  ></Form.Check>
-                );
-              })}
+                  {parts.map(({ id, value }) => {
+                    return (
+                      <>
+                        <Form.Check
+                          onChange={(event) => setPart(event.target.value)}
+                          inline
+                          label={value}
+                          type="radio"
+                          className="ml-3"
+                          name="part"
+                          id="part"
+                          value={part}
+                        ></Form.Check>
+                        <br />
+                      </>
+                    );
+                  })}
+                </Col>
+              </Row>
               <Button className="mt-3" onClick={(e) => handleSubmit(e)}>
                 Add
               </Button>
